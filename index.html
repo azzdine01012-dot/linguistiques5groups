@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Finder - S5 Linguistique / LIT</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-image: url('https://images.pexels.com/photos/931162/pexels-photo-931162.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.90);
+      padding: 40px 30px;
+      margin: 60px auto;
+      width: 90%;
+      max-width: 520px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(214, 51, 132, 0.3);
+    }
+
+    h2 {
+      color: #d63384;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    select, input, button {
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 2px solid #d63384;
+      border-radius: 10px;
+      margin: 8px 0;
+      outline: none;
+    }
+
+    select, input {
+      width: 85%;
+      max-width: 320px;
+      text-align: center;
+      background: white;
+    }
+
+    button {
+      background-color: #ffb6c1;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      width: 85%;
+      max-width: 320px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff8fab;
+      transform: scale(1.03);
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 20px;
+      color: #c2185b;
+      font-weight: bold;
+      min-height: 30px;
+    }
+
+    footer {
+      margin-top: 35px;
+      font-size: 13px;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Group Finder – Semestre 5</h2>
+    <p class="subtitle">Linguistique & LIT</p>
+
+    <select id="parcours">
+      <option value="ling">Parcours 1 : Linguistique</option>
+      <option value="lit">Parcours 2 : LIT</option>
+    </select>
+
+    <br>
+    <input type="text" id="lastName" placeholder="Enter your last name here">
+    <br>
+    <button onclick="findGroup()">Search 🌸</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function findGroup() {
+      const inputName = document.getElementById("lastName").value.trim();
+      const parcours = document.getElementById("parcours").value;
+      const result = document.getElementById("result");
+
+      if (!inputName) {
+        result.innerText = "❌ Please enter your last name";
+        return;
+      }
+
+      const name = inputName.toUpperCase();
+
+      if (parcours === "ling") {
+        // ===== Linguistique =====
+        if (name < "AZ") {
+          result.innerText = "🎉 You are in Groupe 1\n(AA → AZ)";
+        } else if (name < "DI") {
+          result.innerText = "🎉 You are in Groupe 2\n(AZ → DI)";
+        } else if (name < "HR") {
+          result.innerText = "🎉 You are in Groupe 3\n(DI → HR)";
+        } else if (name < "NI") {
+          result.innerText = "🎉 You are in Groupe 4\n(HR → NI)";
+        } else {
+          result.innerText = "🎉 You are in Groupe 5\n(NI → Z)";
+        }
+      } else {
+        // ===== LIT =====
+        if (name < "ER") {
+          result.innerText = "🎉 You are in Groupe 1\n(AA → ER)";
+        } else {
+          result.innerText = "🎉 You are in Groupe 2\n(ER → Z)";
+        }
+      }
+    }
+  </script>
+
+  <footer>
+    Made for S5 students 🌸
+  </footer>
+</body>
+</html>
